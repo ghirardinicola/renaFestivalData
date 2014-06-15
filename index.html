@@ -17,19 +17,27 @@
 
   var wordData = [];
   var freq= [];
+  var maxFreq=100000;
+  var minFreq=0;
 
   d3.csv("data/word.csv", function(data) {
   // build the list of words
     data.forEach(function (d) {
       wordData.push(d);
-      freq.push(parseInt(d.freq));
-    }); 
+      freq1 = parseInt(d.freq)
+      freq.push(freq1);
+      if (freq1>minFreq) {
+        minFreq=freq1
+      }
+      if (freq1<maxFreq) {
+        maxFreq=freq1
+      }
+    });
 
   d3.layout.cloud()
     .size([width, height])
     .words(wordData.map(function(d) {
-      return {text: d.term, size: Math.log(d.freq*2)+d.freq/5};
-      //return {text: d.term, size: d.freq/width*300};
+      return {text: d.term, size: Math.floor(width*height/50000) + Math.floor(width*height/50000/5) * d.freq/maxFreq};
     }))
     .rotate(function() { return ~~(Math.random() * 2) * 90; })
     .font("Impact")
