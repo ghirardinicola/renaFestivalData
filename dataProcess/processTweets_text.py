@@ -58,7 +58,7 @@ file.write(format(textAll))
 # for k,v in wordcount.items():
 #     print k, v
 
-#common_word_dic=['e','il','con','un','a','per','la','le','in','una','delle','ci','sono','del','ma','che','RT','non','di','Le','si','della','al','']
+char_to_remove = [",","@","#"]
 
 cnt = Counter()
 for word in textAll.split():
@@ -66,9 +66,10 @@ for word in textAll.split():
     if word[0]=='#':
         word=word[1:]
     if word not in stopWords:
-        if not re.match("^@.*", word):
+        if not re.match("@.*", word):
             if not re.match("^http.*", word):
                 if (len(word)  > 4):
+                    word = re.sub('[!@#$,.:"]', '', word)
                     cnt[word] += 1
 
 for word, count in cnt.most_common(200):
