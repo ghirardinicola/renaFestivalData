@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<!--<script src="lib/d3/d3.js"></script>-->
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js">
+</script>
+<script src="d3.layout.cloud.js"></script>
+<script>
+  
+  var fill = d3.scale.category20();
+  var wordData = [];
+  var freq= [];
+
+  d3.csv("data/word.csv", function(data) {
+  // build the list of words
+    data.forEach(function (d) {
+      wordData.push(d);
+      freq.push(parseInt(d.freq));
+    }); 
+
+  d3.layout.cloud()
+    .size([800, 500])
+    .words(wordData.map(function(d) {
+      return {text: d.term, size: Math.log(d.freq)+d.freq/10};
+    }))
+    .rotate(function() { return ~~(Math.random() * 2) * 90; })
+    .font("Impact")
+    .fontSize(function(d) { return d.size;})
+    .on("end", draw)
+    .start();
+
+  });  
+
+  var colors = Array('#F5A84B' , '#4BB285', '#681848', '#E75043' , '#C9C9C9' , '#979797' , '#656565' , '#F5F5F5');
+
+  function draw(words) {
+    d3.select("body").append("svg")
+    .attr("width", 800)
+    .attr("height", 500)
+    .append("g")
+    .attr("transform", "translate(400,250)")
+    .selectAll("text")
+    .data(words)
+    .enter().append("text")
+    .style("font-size", function(d) { return d.size + "px"; })
+    .style("font-family", "Impact")
+    .style("fill", function(d, i) { return colors[Math.floor(Math.random()*colors.length)]; })
+    //
+    //.style("fill", "#E7511F")
+    .attr("text-anchor", "middle")
+    .attr("transform", function(d) {
+    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+    //return "translate(" + [d.x, d.y] + ")";
+    //return "translate(" + [d.x, d.y] + ")rotate(" + Math.floor(Math.random() * 90 - 45)  + ")"; 
+      })
+    .text(function(d) { return d.text; });
+    } 
+
+
+    function scale(size) {
+      return size;
+    }
+
+</script>
