@@ -8,7 +8,13 @@
 <script src="d3.layout.cloud.js"></script>
 <script>
   
-  var fill = d3.scale.category20();
+  var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    width = (w.innerWidth || e.clientWidth || g.clientWidth)*0.98,
+    height = (w.innerHeight|| e.clientHeight|| g.clientHeight)*0.98;
+
   var wordData = [];
   var freq= [];
 
@@ -20,9 +26,10 @@
     }); 
 
   d3.layout.cloud()
-    .size([800, 500])
+    .size([width, height])
     .words(wordData.map(function(d) {
-      return {text: d.term, size: Math.log(d.freq)+d.freq/10};
+      return {text: d.term, size: Math.log(d.freq*2)+d.freq/5};
+      //return {text: d.term, size: d.freq/width*300};
     }))
     .rotate(function() { return ~~(Math.random() * 2) * 90; })
     .font("Impact")
@@ -32,14 +39,14 @@
 
   });  
 
-  var colors = Array('#F5A84B' , '#4BB285', '#681848', '#E75043' , '#C9C9C9' , '#979797' , '#656565' , '#F5F5F5');
+  var colors = Array('#F5A84B' , '#4BB285', '#681848', '#E75043' , '#979797' , '#656565');
 
   function draw(words) {
     d3.select("body").append("svg")
-    .attr("width", 800)
-    .attr("height", 500)
+    .attr("width", width)
+    .attr("height", height)
     .append("g")
-    .attr("transform", "translate(400,250)")
+    .attr("transform", "translate("+width/2+","+height/2+")")
     .selectAll("text")
     .data(words)
     .enter().append("text")
