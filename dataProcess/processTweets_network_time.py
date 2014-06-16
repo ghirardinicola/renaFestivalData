@@ -41,9 +41,10 @@ for file in files:
             if 'entities' in data and len(data['entities']['user_mentions']) > 0:
                 user = data['user']
                 user_mentions = data['entities']['user_mentions']
+               
 
                 for u2 in user_mentions:
-                    #print "\t".join([
+                    #    print "\t".join([
                     #    user['id_str'],
                     #    u2['id_str']
                     #    ])
@@ -64,6 +65,9 @@ for file in files:
                     v=g[when].vs.find(name=uto)
 
                     g[when].add_edge(u,v,weight=1.0)
+                    if unicode(user['screen_name']) == unicode("Tukulti_Ninurta"):
+                        print mention
+                        print when
                     mentions.append(mention)
 
 #from IPython import embed; embed()
