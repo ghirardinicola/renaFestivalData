@@ -40,8 +40,8 @@ for file in files:
     else:
 
         ts = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(data['created_at'],'%a %b %d %H:%M:%S +0000 %Y'))
-        t1 = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime("Sat Jun 14 13:30:00 +0000 2014",'%a %b %d %H:%M:%S +0000 %Y'))
-        t2 = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime("Sat Jun 14 18:30:15 +0000 2014",'%a %b %d %H:%M:%S +0000 %Y'))
+        t1 = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime("Sat Jun 14 13:00:00 +0000 2014",'%a %b %d %H:%M:%S +0000 %Y'))
+        t2 = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime("Sat Jun 14 19:30:15 +0000 2014",'%a %b %d %H:%M:%S +0000 %Y'))
         t3 = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime("Sun Jun 15 05:30:15 +0000 2014",'%a %b %d %H:%M:%S +0000 %Y'))
         if (ts<t1):
             when=1
