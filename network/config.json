@@ -1,0 +1,53 @@
+{
+  "type": "network",
+  "version": "1.0",
+  "data": "data.json",
+  "logo": {
+    "text": "@metiuuitem @ghirardinicola",
+    "file": "images/FDCC.png",
+    "link": "http://www.progetto-rena.it/festival"
+  },
+  "text": {
+    "title": "RENAFestival",
+    "more": "Visualizzazione della rete di interazioni su Twitter relativi a #RENAFestival del 2014-06-14<br>La dimensione di un nodo è proporzionale al numero di mentions ricevute.<br>Il colore dei nodi e dei lati evidenzia i sottoinsiemi di userid che interagiscono fra loro con più frequenza (community).<br><br>By Matteo Fortini (@metiuuitem), Nicola Ghirardi (@ghirardinicola). Logo CC-BY Luca Corsato (@lucacorsato)",
+    "intro": "#RENAFestival 2014-06-14 su Twitter"
+  },
+  "legend": {
+    "edgeLabel": "mentions",
+    "colorLabel": "",
+    "nodeLabel": "Twitter userid"
+  },
+  "features": {
+    "search": true,
+    "groupSelectorAttribute": false,
+    "hoverBehavior": "dim"
+  },
+  "informationPanel": {
+    "imageAttribute": false,
+    "groupByEdgeDirection": false
+  },
+  "sigma": {
+    "graphProperties": {
+      "minEdgeSize": 0.2,
+      "maxNodeSize": 20,
+      "maxEdgeSize": 1,
+      "minNodeSize": 1
+    },
+    "drawingProperties": {
+      "labelThreshold": 1,
+      "hoverFontStyle": "bold",
+      "defaultEdgeType": "curve",
+      "defaultLabelColor": "#000",
+      "defaultLabelHoverColor": "#fff",
+      "defaultLabelSize": 14,
+      "activeFontStyle": "bold",
+      "fontStyle": "bold",
+      "defaultHoverLabelBGColor": "#002147",
+      "defaultLabelBGColor": "#ddd"
+    },
+    "mouseProperties": {
+      "minRatio": 0.75,
+      "maxRatio": 20
+    }
+  }
+}
