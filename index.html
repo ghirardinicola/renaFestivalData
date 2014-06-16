@@ -40,7 +40,11 @@
   d3.layout.cloud()
     .size([width, height])
     .words(wordData.map(function(d) {
-      return {text: d.term, size: Math.floor(width*height/10000/5) + Math.floor(width*height/10000) * d.freq/maxFreq};
+      boxParam = width*height/60000
+      console.log (boxParam)
+      //this scaing function was the harder part
+      size = Math.floor(boxParam) + Math.floor(boxParam*6) * d.freq/maxFreq;
+      return {text: d.term, size: size};
     }))
     .rotate(function() { return ~~(Math.random() * 2) * 90; })
     .font("Impact")
@@ -75,9 +79,5 @@
     .text(function(d) { return d.text; });
     } 
 
-
-    function scale(size) {
-      return size;
-    }
 
 </script>
