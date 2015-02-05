@@ -65,9 +65,6 @@ for file in files:
                     v=g[when].vs.find(name=uto)
 
                     g[when].add_edge(u,v,weight=1.0)
-                    if unicode(user['screen_name']) == unicode("Tukulti_Ninurta"):
-                        print mention
-                        print when
                     mentions.append(mention)
 
 #from IPython import embed; embed()
